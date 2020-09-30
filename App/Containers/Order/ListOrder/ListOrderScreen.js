@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
   View,
   Text,
-  Button, Dimensions
+  Dimensions
 } from 'react-native';
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 
@@ -17,7 +17,7 @@ const renderTabBar = props => (
     indicatorStyle={styles.indicatorStl}
     style={styles.tabBarStl}
     tabStyle={{width: 'auto'}}
-    scrollEnabled="true"
+    scrollEnabled={true}
     renderBadge={() => {}}
     renderLabel={({ route, focused, color }) => (
       <View style={styles.tabbarLabel}>
@@ -40,7 +40,12 @@ const renderScene = SceneMap({
   khoTQ: () => <OrderTab/>,
   khoVN: () => <OrderTab/>,
   doiSoat: () => <OrderTab/>,
-  dangGoi: () => <OrderTab/>
+  dangGoi: () => <OrderTab/>,
+  dagiao: () => <OrderTab/>,
+  danhan: () => <OrderTab/>,
+  hoanthanh: () => <OrderTab/>,
+  hangloi: () => <OrderTab/>,
+  huydon: () => <OrderTab/>
 })
 
 export default class ListOrderScreen extends Component {
@@ -56,7 +61,11 @@ export default class ListOrderScreen extends Component {
         { key: 'khoVN', title: 'Đã về kho VN' },
         { key: 'doiSoat', title: 'Đối soát' },
         { key: 'dangGoi', title: 'Đang gói hàng' },
-
+        { key: 'dagiao', title: 'Đã giao hàng' },
+        { key: 'danhan', title: 'Khách đã nhận' },
+        { key: 'hoanthanh', title: 'Hoàn thành' },
+        { key: 'hangloi', title: 'Hàng lỗi' },
+        { key: 'huydon', title: 'Hủy đơn' }
       ]
     }
   }

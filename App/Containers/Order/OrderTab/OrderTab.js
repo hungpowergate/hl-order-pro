@@ -5,10 +5,8 @@ import {
   FlatList,
   RefreshControl
 } from 'react-native';
-import PropTypes from 'prop-types';
 
 import { commom } from '~/Themes';
-import styles from './styles';
 import OrderItem from '~/Components/OrderItem/OrderItem';
 
 class OrderTab extends Component {
