@@ -10,12 +10,9 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 import { Images, Colors } from '~/Themes';
 
-export default class OrderItem extends Component {
-  state = {
-    isAdmin: true
-  }
+export default class OrderItem extends Component {  
   render() {
-    const { order } = this.props;
+    const { order, isAdmin } = this.props;
     const colorStatus = Colors.pending
     return (
       <View style={styles.container}>
@@ -42,7 +39,7 @@ export default class OrderItem extends Component {
         </TouchableOpacity>
         
         {
-          this.state.isAdmin ? 
+          isAdmin ? 
             <View style={styles.boxScan}>
               <View style={styles.colScanLeft}>
                 <TouchableOpacity style={styles.btnScan}>
@@ -78,5 +75,6 @@ export default class OrderItem extends Component {
 
 OrderItem.propTypes = {
   order: PropTypes.object,
-  showDetail: PropTypes.func
+  showDetail: PropTypes.func,
+  isAdmin: PropTypes.bool
 }

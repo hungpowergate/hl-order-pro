@@ -49,7 +49,7 @@ class OrderTab extends Component {
     const { listOrder, refreshing } = this.state;    
 
     const renderItem = ({item}) => (
-      <OrderItem order={item} view={() => this.viewOrder(item)} />
+      <OrderItem order={item} isAdmin={true} view={() => this.viewOrder(item)} />
     )
   
     return (
