@@ -17,14 +17,14 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* quanlykhoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* quanlykhoTests.m */; };
 		36CFC38A6E986A05E656D561 /* libPods-quanlykho-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5DEF0AA484711B5F268D491 /* libPods-quanlykho-tvOSTests.a */; };
-		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		B3B0DD084EE174B8EFA71C75 /* libPods-quanlykho-quanlykhoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D74E5655D8EC71A6AD88AC1 /* libPods-quanlykho-quanlykhoTests.a */; };
-		F1D1E1243CCEF1D9188E0CB9 /* libPods-quanlykho.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72E84DE4593E56B1B07DACF3 /* libPods-quanlykho.a */; };
 		807A3102EE2B45AC85CE5302 /* Muli-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F387ABC6387F4EC5AB0AA119 /* Muli-Bold.ttf */; };
-		DAD8FBB5DE6248F0B7200129 /* Muli-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F94F48DF7F734420B1A5C206 /* Muli-Light.ttf */; };
-		F5467867180244A28B023DAD /* Muli-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 12CBCF0BC6CC4546B51FF959 /* Muli-Medium.ttf */; };
-		ADDF3F9BB23C40DA88E5DA79 /* Muli-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E3DF5A7D9D54A2FB0911C66 /* Muli-Regular.ttf */; };
+		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		9E1032E96CA741B5AE8E8C79 /* Muli-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EBD5A5841156405AA8748FE0 /* Muli-SemiBold.ttf */; };
+		ADDF3F9BB23C40DA88E5DA79 /* Muli-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E3DF5A7D9D54A2FB0911C66 /* Muli-Regular.ttf */; };
+		B3B0DD084EE174B8EFA71C75 /* libPods-quanlykho-quanlykhoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D74E5655D8EC71A6AD88AC1 /* libPods-quanlykho-quanlykhoTests.a */; };
+		DAD8FBB5DE6248F0B7200129 /* Muli-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F94F48DF7F734420B1A5C206 /* Muli-Light.ttf */; };
+		F1D1E1243CCEF1D9188E0CB9 /* libPods-quanlykho.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72E84DE4593E56B1B07DACF3 /* libPods-quanlykho.a */; };
+		F5467867180244A28B023DAD /* Muli-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 12CBCF0BC6CC4546B51FF959 /* Muli-Medium.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +49,7 @@
 		00E356EE1AD99517003FC87E /* quanlykhoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = quanlykhoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* quanlykhoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = quanlykhoTests.m; sourceTree = "<group>"; };
+		12CBCF0BC6CC4546B51FF959 /* Muli-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Muli-Medium.ttf"; path = "../App/Assets/fonts/Muli-Medium.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* quanlykho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = quanlykho.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = quanlykho/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = quanlykho/AppDelegate.m; sourceTree = "<group>"; };
@@ -64,19 +65,18 @@
 		5D74E5655D8EC71A6AD88AC1 /* libPods-quanlykho-quanlykhoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-quanlykho-quanlykhoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6858B7F0D6ACCD35A8D9B33D /* Pods-quanlykho-quanlykhoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-quanlykho-quanlykhoTests.debug.xcconfig"; path = "Target Support Files/Pods-quanlykho-quanlykhoTests/Pods-quanlykho-quanlykhoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		72E84DE4593E56B1B07DACF3 /* libPods-quanlykho.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-quanlykho.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E3DF5A7D9D54A2FB0911C66 /* Muli-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Muli-Regular.ttf"; path = "../App/Assets/fonts/Muli-Regular.ttf"; sourceTree = "<group>"; };
 		7E869FAD1A406A6667C4EB71 /* Pods-quanlykho-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-quanlykho-tvOS.release.xcconfig"; path = "Target Support Files/Pods-quanlykho-tvOS/Pods-quanlykho-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = quanlykho/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B5DEF0AA484711B5F268D491 /* libPods-quanlykho-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-quanlykho-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D032E0607E0DA70B0086759E /* Pods-quanlykho-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-quanlykho-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-quanlykho-tvOSTests/Pods-quanlykho-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E9C721DA74CB7650D41FC5BF /* Pods-quanlykho.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-quanlykho.debug.xcconfig"; path = "Target Support Files/Pods-quanlykho/Pods-quanlykho.debug.xcconfig"; sourceTree = "<group>"; };
+		EBD5A5841156405AA8748FE0 /* Muli-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Muli-SemiBold.ttf"; path = "../App/Assets/fonts/Muli-SemiBold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F1FB5ADCAD22E1D67F758288 /* Pods-quanlykho-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-quanlykho-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-quanlykho-tvOS/Pods-quanlykho-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
-		F387ABC6387F4EC5AB0AA119 /* Muli-Bold.ttf */ = {isa = PBXFileReference; name = "Muli-Bold.ttf"; path = "../App/Assets/fonts/Muli-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		F94F48DF7F734420B1A5C206 /* Muli-Light.ttf */ = {isa = PBXFileReference; name = "Muli-Light.ttf"; path = "../App/Assets/fonts/Muli-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		12CBCF0BC6CC4546B51FF959 /* Muli-Medium.ttf */ = {isa = PBXFileReference; name = "Muli-Medium.ttf"; path = "../App/Assets/fonts/Muli-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		7E3DF5A7D9D54A2FB0911C66 /* Muli-Regular.ttf */ = {isa = PBXFileReference; name = "Muli-Regular.ttf"; path = "../App/Assets/fonts/Muli-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		EBD5A5841156405AA8748FE0 /* Muli-SemiBold.ttf */ = {isa = PBXFileReference; name = "Muli-SemiBold.ttf"; path = "../App/Assets/fonts/Muli-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F387ABC6387F4EC5AB0AA119 /* Muli-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Muli-Bold.ttf"; path = "../App/Assets/fonts/Muli-Bold.ttf"; sourceTree = "<group>"; };
+		F94F48DF7F734420B1A5C206 /* Muli-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Muli-Light.ttf"; path = "../App/Assets/fonts/Muli-Light.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -316,6 +316,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = 85W99DJ7R5;
 						LastSwiftMigration = 1120;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
@@ -683,6 +684,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 85W99DJ7R5;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = quanlykho/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -706,6 +708,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 85W99DJ7R5;
 				INFOPLIST_FILE = quanlykho/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (

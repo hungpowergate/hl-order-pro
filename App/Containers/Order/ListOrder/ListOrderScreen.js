@@ -81,7 +81,7 @@ export default class ListOrderScreen extends Component {
           placeholder='Tìm kiếm đơn hàng' 
           iconRight
           inputWrapStl={styles.inputSearch}
-          containerStl={commom.mx15}
+          containerStl={styles.inputContainer}
         />
         <TabView      
           renderTabBar={renderTabBar}
@@ -91,6 +91,7 @@ export default class ListOrderScreen extends Component {
           onIndexChange={index => this.setState({index})}
           initialLayout={initialLayout}
           getLabelText={({ route }) => route.title}
+          lazy={true}
         />
         <View style={styles.boxSum}>
           <Text style={styles.textSum}>Tổng tiền hàng: 50,000,000đ</Text>

@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import { View, Text, TextInput, Image } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Colors, Images } from '~/Themes'
 import styles from './styles';
 
@@ -23,7 +24,14 @@ class InputDefault extends PureComponent {
           {
             monney ? <Text style={styles.monney}>Đ</Text> : null
           }
-          {iconRight ? <Image style={styles.iconRight} source={Images.searchIcon} /> : null }
+          {iconRight ? 
+          <View style={styles.iconRight}>
+            <TouchableOpacity style={{padding: 10}}  onPress={() => alert('wer')}>
+              <Image source={Images.searchIcon} style={{width: 17, height: 17}} /> 
+            </TouchableOpacity>
+          </View>
+            : null
+             }
         </View>
         
         {

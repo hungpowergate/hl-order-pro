@@ -33,6 +33,9 @@ export default StyleSheet.create({
   mt35: {
     marginTop: 35
   },
+  mb10: {
+    marginBottom: 10
+  },
   pt35: {
     paddingTop: 35
   },

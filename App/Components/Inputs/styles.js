@@ -10,7 +10,7 @@ export default StyleSheet.create({
     fontFamily: 'Muli-Regular',
     fontSize: 14,
     lineHeight: 20,
-    lineHeight: -0.24,
+    letterSpacing: -0.24,
     color: '#000000',
     marginBottom: 5
   },
@@ -41,11 +41,11 @@ export default StyleSheet.create({
     top: 13
   },
   iconRight: {
-    width: 17,
-    height: 17,
+    width: 44,
+    height: 44,
     position: 'absolute',
-    right: 15,
-    top: 13
+    right: 0,
+    top: 2
   },
   error: {
     color: Colors.red,
