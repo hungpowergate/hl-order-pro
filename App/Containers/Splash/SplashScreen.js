@@ -8,17 +8,14 @@ import { isLogined } from '~/Services/AuthService';
 
 class SplashScreen extends Component {
   async componentDidMount() {
-    if (await isLogined()) {
-      this.props.navigation.navigate(SCREEN.MAIN.NAME);
-    } else {
-      this.props.navigation.navigate(SCREEN.LOGIN.NAME);
-    }
+    const routerName = await isLogined() ? SCREEN.MAIN.NAME : SCREEN.LOGIN.NAME;
+    this.props.navigation.replace(routerName);
   }
 
   render() {
     return (
       <View>
-          
+        
       </View>
     );
   }
