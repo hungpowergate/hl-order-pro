@@ -22,7 +22,7 @@ export default StyleSheet.create({
     // color: Colors.black,
     fontFamily: 'Muli-Regular',
     textAlign: 'center',
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
   },
   badge: {
     position: 'absolute',
