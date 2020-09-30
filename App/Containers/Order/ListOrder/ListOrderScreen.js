@@ -20,7 +20,7 @@ const renderTabBar = props => (
     scrollEnabled={true}
     renderBadge={() => {}}
     renderLabel={({ route, focused, color }) => (
-      <View style={{position: 'relative'}}>
+      <View style={styles.tabbarLabel}>
         <Text style={[styles.labelStl, {color: focused ? Colors.blue: Colors.black}  ]}>
           {route.title}
         </Text>
@@ -92,6 +92,9 @@ export default class ListOrderScreen extends Component {
           initialLayout={initialLayout}
           getLabelText={({ route }) => route.title}
         />
+        <View style={styles.boxSum}>
+          <Text style={styles.textSum}>Tổng tiền hàng: 50,000,000đ</Text>
+        </View>
       </View>
     )
   }

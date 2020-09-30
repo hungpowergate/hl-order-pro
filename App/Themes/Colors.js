@@ -32,6 +32,4 @@ export default {
   hangLoi: '#F10101',
   huyDon: '#111111',
   thanhToan: '#04C33A',
-
-
 }
