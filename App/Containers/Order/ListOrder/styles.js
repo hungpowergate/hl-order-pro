@@ -12,7 +12,7 @@ export default StyleSheet.create({
   },
   tabBarStl: {
     backgroundColor: 'transparent',
-    color: 'red'
+    color: 'red',
   },
   tabbarLabel: {
     position: 'relative',
