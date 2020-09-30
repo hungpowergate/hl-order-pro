@@ -6,18 +6,40 @@ import {
   TouchableOpacity
 } from 'react-native';
 import PropTypes from 'prop-types';
+import ImagePicker from 'react-native-image-picker';
 
 import styles from './styles';
 import { Images, Colors } from '~/Themes';
 
-export default class OrderItem extends Component {  
+export default class OrderItem extends Component {
+  captureImage() {
+    const options = {
+      title: 'Chọn ảnh bao hàng',      
+      takePhotoButtonTitle: 'Chụp ảnh',
+      chooseFromLibraryButtonTitle: 'Chọn ảnh từ thư viện',
+      cancelButtonTitle: 'Hủy'
+    };
+
+    ImagePicker.showImagePicker(options, (response) => {
+      if (!response.didCancel) {
+        console.log('Close picker!');
+      } else if (response.error) {
+        console.log('ImagePicker Error: ', response.error);
+      } else if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton);
+      } else {
+        const source = { uri: response.uri };
+      }
+    })
+  }
+  
   render() {
     const { order, isAdmin } = this.props;
-    const colorStatus = Colors.pending
+    const colorStatus = Colors.pending;
+
     return (
       <View style={styles.container}>
-        
-        <TouchableOpacity style={styles.boxDetails} onPress={() => this.props.showDetail(order)}>
+        <TouchableOpacity style={styles.boxDetails} onPress={() => this.props.view(order)}>
           <Image
             style={styles.image}
             source={Images.logo}
@@ -42,24 +64,24 @@ export default class OrderItem extends Component {
           isAdmin ? 
             <View style={styles.boxScan}>
               <View style={styles.colScanLeft}>
-                <TouchableOpacity style={styles.btnScan}>
+                <TouchableOpacity style={styles.btnScan} onPress={() => this.props.openWebView(order.url)}>
                   <Text style={styles.textScan}>Mã vận đơn TQ</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.btnScan}>
+                <TouchableOpacity style={styles.btnScan} onPress={() => this.props.openWebView(order.url)}>
                   <Text style={styles.textScan}>Mã vận đơn VN</Text>
                 </TouchableOpacity>
               </View>
               <View style={styles.colScanCenter}>
-                <TouchableOpacity style={styles.wrapCamera}>
+                <TouchableOpacity style={styles.wrapCamera} onPress={() => this.captureImage()}>
                   <Text style={styles.textScan}>Chụp ảnh bao hàng</Text>
                   <Image style={styles.iconCamera} source={Images.cameraIcon}/>
                 </TouchableOpacity>
               </View>
               <View style={styles.colScanRight}>
-                <TouchableOpacity style={styles.btnScan}>
+                <TouchableOpacity style={styles.btnScan} onPress={() => this.props.openWebView(order.url)}>
                   <Text style={styles.textScan}>Mã vận đơn</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.btnScan}>
+                <TouchableOpacity style={styles.btnScan} onPress={() => this.props.openWebView(order.url)}>
                   <Text style={styles.textScan}>Mã bao hàng</Text>
                 </TouchableOpacity>
               </View>
@@ -68,7 +90,6 @@ export default class OrderItem extends Component {
         }
      
      </View>
-
     )
   }
 }
@@ -76,5 +97,6 @@ export default class OrderItem extends Component {
 OrderItem.propTypes = {
   order: PropTypes.object,
   showDetail: PropTypes.func,
-  isAdmin: PropTypes.bool
+  isAdmin: PropTypes.bool,
+  openWebView: PropTypes.func
 }

@@ -70,7 +70,7 @@ export default class LoginScreen extends ValidationComponent {
   }
 
   render() {
-    const { username, password } = this.state;
+    const { username, password, isCallingApi } = this.state;
 
     return (
       <SafeAreaView style={commom.safeArea}>
@@ -100,8 +100,9 @@ export default class LoginScreen extends ValidationComponent {
             />        
             {this.isFieldInError('password') ? <Text style={styles.errorText}>{MESSAGE.PASSWORD_REQUIRED}</Text> : null}
           </View>
-          <ButtonDefault 
+          <ButtonDefault             
             text="Đăng nhập" 
+            isLoading={isCallingApi}
             onPress={() => {this.login()}}
             containerStl={styles.btnLogin}
           />

@@ -16,7 +16,8 @@ export default StyleSheet.create({
     elevation: 4,
     height: 44,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    flexDirection: 'row'
   },
   text: {
     color: Colors.white,
@@ -25,5 +26,8 @@ export default StyleSheet.create({
     textAlign: 'center',
     letterSpacing: 0.24,
     fontFamily: "Muli-Semibold"
+  },
+  loadingIcon: {
+    marginRight: 10
   }
 })

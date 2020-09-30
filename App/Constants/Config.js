@@ -10,3 +10,17 @@ export const WEBSITE = {
 export const STORAGE_KEY = {
   TOKEN: 'TOKEN_LOGIN'
 }
+export const ORDER_TYPE = {
+  all: 'all',
+  pending: 'pending',
+  reported: 'reported',
+  khoTQ: 'khoTQ',
+  khoVN: 'khoVN',
+  doiSoat: 'doiSoat',
+  dangGoi: 'dangGoi',
+  dagiao: 'dagiao',
+  danhan: 'danhan',
+  hoanthanh: 'hoanthanh',
+  hangloi: 'hangloi',
+  huydon: 'huydon'
+}
