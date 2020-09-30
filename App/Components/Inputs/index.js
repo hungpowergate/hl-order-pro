@@ -8,7 +8,7 @@ class InputDefault extends PureComponent {
 
   
   render() {
-    const {containerStl, inputWrapStl, inputStl, label, iconRight, monney, hasLabel, hasError, textError, ...props} = this.props
+    const {containerStl, inputWrapStl, inputStl, label, iconRight, submit, monney, hasLabel, hasError, textError, ...props} = this.props
     return (
       <View style={[styles.container, containerStl]}>
         {
@@ -26,7 +26,7 @@ class InputDefault extends PureComponent {
           }
           {iconRight ? 
           <View style={styles.iconRight}>
-            <TouchableOpacity style={{padding: 10}}  onPress={() => alert('wer')}>
+            <TouchableOpacity style={{padding: 10}}  onPress={submit}>
               <Image source={Images.searchIcon} style={{width: 17, height: 17}} /> 
             </TouchableOpacity>
           </View>

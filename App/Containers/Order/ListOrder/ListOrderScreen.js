@@ -59,16 +59,16 @@ export default class ListOrderScreen extends Component {
       routes: [
         { key: 'all', title: 'Tất cả', color: 'red' },
         { key: 'pending', title: 'Chờ duyệt', color: Colors.pending },
-        { key: 'reported', title: 'Đã báo', color: Colors.pending },
-        { key: 'khoTQ', title: 'Đã về kho TQ', color: Colors.pending },
-        { key: 'khoVN', title: 'Đã về kho VN', color: Colors.pending },
-        { key: 'doiSoat', title: 'Đối soát', color: Colors.pending },
-        { key: 'dangGoi', title: 'Đang gói hàng', color: Colors.pending },
-        { key: 'dagiao', title: 'Đã giao hàng', color: Colors.pending },
-        { key: 'danhan', title: 'Khách đã nhận', color: Colors.pending },
-        { key: 'hoanthanh', title: 'Hoàn thành', color: Colors.pending },
-        { key: 'hangloi', title: 'Hàng lỗi', color: Colors.pending },
-        { key: 'huydon', title: 'Hủy đơn', color: Colors.pending }
+        { key: 'reported', title: 'Đã báo', color: Colors.daBao },
+        { key: 'khoTQ', title: 'Đã về kho TQ', color: Colors.khoTQ },
+        { key: 'khoVN', title: 'Đã về kho VN', color: Colors.khoVN },
+        { key: 'doiSoat', title: 'Đối soát', color: Colors.doiSoat },
+        { key: 'dangGoi', title: 'Đang gói hàng', color: Colors.dangGoi },
+        { key: 'dagiao', title: 'Đã giao hàng', color: Colors.daGiao },
+        { key: 'danhan', title: 'Khách đã nhận', color: Colors.daNhan },
+        { key: 'hoanthanh', title: 'Hoàn thành', color: Colors.hoanThanh },
+        { key: 'hangloi', title: 'Hàng lỗi', color: Colors.hangLoi },
+        { key: 'huydon', title: 'Hủy đơn', color: Colors.huyDon }
       ]
     }
   }

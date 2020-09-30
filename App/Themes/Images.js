@@ -3,5 +3,6 @@ export default {
 
   searchIcon: require('~/Assets/icons/search.png'),
   cameraIcon: require('~/Assets/icons/camera.png'),
+  product: require('~/Assets/Images/product.png'),
 
 }
