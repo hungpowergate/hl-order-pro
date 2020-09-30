@@ -1,26 +1,30 @@
 import React, { Component } from 'react';
 import {
-  View,
-  Text,
+  View,  
   FlatList,
   RefreshControl
 } from 'react-native';
 
 import { commom } from '~/Themes';
 import OrderItem from '~/Components/OrderItem/OrderItem';
+import WebviewCustom from '~/Components/WebviewCustom/WebviewCustomComponent';
 
 class OrderTab extends Component {
   constructor(props) {
     super(props);
     this.state = {
       refreshing: false,
-      listOrder: []
+      listOrder: [],
+      webViewConfig: {
+        url: '',
+        isShow: false
+      }
     }
   }
 
   componentDidMount() {
     const mocks = [];
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 1; i++) {
       mocks.push({
         id: i.toString(),
         image: 'werwe',
@@ -38,18 +42,41 @@ class OrderTab extends Component {
   }
 
   viewOrder(order) {
-    
+    this.props.viewOrder(order);
   }
 
   refreshListOrder() {
-    console.log('Loading!');
+    
+  }
+
+  openWebView(url) {
+    this.setState({
+      webViewConfig: {
+        url,
+        isShow: true
+      }
+    })
+  }
+
+  closeWebView() {
+    this.setState({
+      webViewConfig: {
+        url: '',
+        isShow: false
+      }
+    })
   }
 
   render() {
-    const { listOrder, refreshing } = this.state;    
+    const { listOrder, refreshing, webViewConfig } = this.state;
 
     const renderItem = ({item}) => (
-      <OrderItem order={item} isAdmin={true} view={() => this.viewOrder(item)} />
+      <OrderItem 
+        order={item} 
+        isAdmin={true} 
+        openWebView={url => this.openWebView(url)}
+        view={() => this.viewOrder(item)} 
+      />
     )
   
     return (
@@ -64,6 +91,12 @@ class OrderTab extends Component {
              onRefresh={() => this.refreshListOrder()}
             />
           }
+        />
+
+        <WebviewCustom
+          close={() => this.closeWebView()}
+          url={webViewConfig.url}
+          isShow={webViewConfig.isShow}
         />
       </View>
     )

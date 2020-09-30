@@ -6,10 +6,11 @@ import {
 } from 'react-native';
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 
+import styles from './styles'
 import { ORDER_TYPE } from '~/Constants/Config';
 import { commom, Colors } from "~/Themes";
 import InputDefault from '~/Components/Inputs';
-import styles from './styles'
+import { SCREEN } from '~/Services/NavigationService';
 import OrderTab from '../OrderTab/OrderTab';
 
 const renderTabBar = props => (
@@ -35,21 +36,21 @@ const renderTabBar = props => (
 )
 
 const renderScene = SceneMap({
-  all: () => <OrderTab type={ORDER_TYPE.all}/>,
-  pending: () => <OrderTab type={ORDER_TYPE.pending}/>,
-  reported: () => <OrderTab type={ORDER_TYPE.reported}/>,
-  khoTQ: () => <OrderTab type={ORDER_TYPE.khoTQ}/>,
-  khoVN: () => <OrderTab type={ORDER_TYPE.khoVN}/>,
-  doiSoat: () => <OrderTab type={ORDER_TYPE.doiSoat}/>,
-  dangGoi: () => <OrderTab type={ORDER_TYPE.dangGoi}/>,
-  dagiao: () => <OrderTab type={ORDER_TYPE.dagiao}/>,
-  danhan: () => <OrderTab type={ORDER_TYPE.danhan}/>,
-  hoanthanh: () => <OrderTab type={ORDER_TYPE.hoanthanh}/>,
-  hangloi: () => <OrderTab type={ORDER_TYPE.hangloi}/>,
-  huydon: () => <OrderTab type={ORDER_TYPE.huydon}/>
+  all: () => <OrderTab type={ORDER_TYPE.all} viewOrder={order => this.viewOrder(order)}/>,
+  pending: () => <OrderTab type={ORDER_TYPE.pending} viewOrder={order => this.viewOrder(order)}/>,
+  reported: () => <OrderTab type={ORDER_TYPE.reported} viewOrder={order => this.viewOrder(order)}/>,
+  khoTQ: () => <OrderTab type={ORDER_TYPE.khoTQ} viewOrder={order => this.viewOrder(order)}/>,
+  khoVN: () => <OrderTab type={ORDER_TYPE.khoVN} viewOrder={order => this.viewOrder(order)}/>,
+  doiSoat: () => <OrderTab type={ORDER_TYPE.doiSoat} viewOrder={order => this.viewOrder(order)}/>,
+  dangGoi: () => <OrderTab type={ORDER_TYPE.dangGoi} viewOrder={order => this.viewOrder(order)}/>,
+  dagiao: () => <OrderTab type={ORDER_TYPE.dagiao} viewOrder={order => this.viewOrder(order)}/>,
+  danhan: () => <OrderTab type={ORDER_TYPE.danhan} viewOrder={order => this.viewOrder(order)}/>,
+  hoanthanh: () => <OrderTab type={ORDER_TYPE.hoanthanh} viewOrder={order => this.viewOrder(order)}/>,
+  hangloi: () => <OrderTab type={ORDER_TYPE.hangloi} viewOrder={order => this.viewOrder(order)}/>,
+  huydon: () => <OrderTab type={ORDER_TYPE.huydon} viewOrder={order => this.viewOrder(order)}/>
 })
 
-export default class ListOrderScreen extends Component {
+export default class ListOrderScreen extends Component {  
   constructor(props) {
     super(props);
     this.state = {
@@ -70,6 +71,10 @@ export default class ListOrderScreen extends Component {
         { key: 'huydon', title: 'Hủy đơn', color: Colors.pending }
       ]
     }
+  }
+
+  viewOrder(order) {
+    this.props.navigation.navigate(SCREEN.DETAIL_ORDER.NAME);
   }
 
   search() {
@@ -97,6 +102,7 @@ export default class ListOrderScreen extends Component {
         <TabView      
           renderTabBar={renderTabBar}
           style={commom.flex_1}
+          lazy={true}
           navigationState={{ index, routes }}
           renderScene={renderScene}
           onIndexChange={index => this.setState({index})}
