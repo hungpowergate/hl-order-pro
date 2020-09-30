@@ -5,10 +5,10 @@ import { Colors } from '~/Themes';
 export default StyleSheet.create({
   container: {
     paddingHorizontal: 0,
-    paddingTop: 35
+    paddingTop: 35,
   },
   inputSearch: {
-    paddingRight: 30
+    paddingRight: 30,
   },
   tabBarStl: {
     backgroundColor: 'transparent',
