@@ -3,6 +3,8 @@ import {
   View,
   Text, ScrollView, ImageBackground, Button
 } from 'react-native';
+
+import { SCREEN } from '~/Services/NavigationService';
 import ButtonDefault from '~/Components/Button';
 import { commom, Images, Colors } from '~/Themes';
 
@@ -10,12 +12,9 @@ import styles from './styles';
 export default class DetailOrderScreen extends Component {
 
   componentDidMount() {
-    this.props.navigation.setOptions({
-      headerLeft: () =>  (
-        <Button title="Filter" onPress={() => alert('Show Filter')} />
-      ),
+    this.props.navigation.setOptions({      
       headerRight: () =>  (
-        <Button title="Chỉnh sửa" onPress={() => alert('Show Filter')} />
+        <Button title="Chỉnh sửa" onPress={() => this.props.navigation.navigate(SCREEN.EDIT_ORDER.NAME)} />
       )
     })
   }
