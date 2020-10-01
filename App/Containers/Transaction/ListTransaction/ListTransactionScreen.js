@@ -8,9 +8,10 @@ import {
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { commom } from '~/Themes';
 import styles from "./ListTransactionScreenStyle";
-import { commom } from '../../../Themes';
-import TransactionTab from './TransactionTab/TransactionTab';
+import TransactionTab from '~/Containers/Transaction/ListTransaction/TransactionTab/TransactionTab';
+import TransactionFilter from '~/Containers/Transaction/ListTransaction/TransactionFilter/TransactionFilter';
 
 const renderTabBar = props => (
   <TabBar
@@ -50,20 +51,46 @@ class ListTransactionScreen extends Component {
           key: 'pay', 
           title: 'Thanh toán' 
         }
-      ]
+      ],
+      filter: {
+        isShow: false,
+        isFiltering: false,
+        query: {
+          startDate: '09/07/2020',
+          endDate: '09/07/2020'
+        }
+      }
     }
+  }
+
+  toggleFilter() {
+    const { filter } = this.state;
+    filter.isShow = !filter.isShow;
+    this.setState({filter});
+  }
+
+  setFilter(newQuery) {
+    let { filter } = this.state;
+    let query = filter.query;
+    query = Object.assign(query, newQuery);
+    this.setState({
+      filter: {
+        ...filter,
+        query
+      }
+    })
   }
 
   componentDidMount() {
     this.props.navigation.setOptions({
       headerLeft: () =>  (
-        <Button title="Filter" onPress={() => alert('Show Filter')} />
+        <Button title="Filter" onPress={() => this.toggleFilter()} />
       )
     })
   }
 
   render() {
-    const { index, routes } = this.state;
+    const { index, routes, filter } = this.state;
     const initialLayout = { 
       width: Dimensions.get('window').width 
     }
@@ -80,6 +107,9 @@ class ListTransactionScreen extends Component {
             initialLayout={initialLayout}
             getLabelText={({ route }) => route.title}
           />
+          <TransactionFilter 
+            option={filter}
+            setFilter={(query) => this.setFilter(query)}/>
         </View>
       // </SafeAreaView>
     )
