@@ -15,7 +15,6 @@ import { getList as getListTransaction } from '~/Services/TransactionService';
 
 class TransactionTab extends Component {
   constructor(props) {
-    console.log('constructor');
     super(props);
     this.state = {
       isCalling: false,
