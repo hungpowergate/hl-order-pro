@@ -15,6 +15,12 @@ import styles from "./ListTransactionScreenStyle";
 import TransactionTab from '~/Containers/Transaction/ListTransaction/TransactionTab/TransactionTab';
 import TransactionFilter from '~/Containers/Transaction/ListTransaction/TransactionFilter/TransactionFilter';
 
+const renderScenes = SceneMap({
+  all: () => <TransactionTab/>,
+  recharge: () => <TransactionTab/>,
+  pay: () => <TransactionTab/>
+})
+
 const renderTabBar = props => (
   <TabBar
     {...props}
@@ -28,12 +34,6 @@ const renderTabBar = props => (
     )}
   />
 )
-
-const renderScene = SceneMap({
-  all: () => <TransactionTab/>,
-  recharge: () => <TransactionTab/>,
-  pay: () => <TransactionTab/>
-})
 
 class ListTransactionScreen extends Component {  
   constructor(props) {
@@ -111,7 +111,7 @@ class ListTransactionScreen extends Component {
             renderTabBar={renderTabBar}
             style={commom.flex_1}
             navigationState={{ index, routes }}
-            renderScene={renderScene}
+            renderScene={ renderScenes }
             onIndexChange={index => this.setState({index})}
             initialLayout={initialLayout}
             getLabelText={({ route }) => route.title}
