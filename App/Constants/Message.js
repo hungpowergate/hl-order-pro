@@ -7,4 +7,7 @@ export default MESSAGE = {
   EMAIL_REQUIRED: 'Email không được để trống',
   EMAIL_INVALID: 'Email không không hợp lệ',
   BIRTHDAY_REQUIRED: 'Năm sinh không được để trống',
+  NAME_REQUIRED: 'Tên không được để trống',
+  PRICE_REQUIRED: 'Giá không được để trống',
+  DESCRIPTION_REQUIRED: 'Mô tả không được để trống',
 }
