@@ -6,6 +6,9 @@ import {
 } from 'react-native';
 
 import { commom } from '~/Themes';
+import { getList as getListOrder } from '~/Services/OrderService';
+import Loading from '~/Components/Loading/Loading';
+import LoadingMore from '~/Components/LoadingMore/LoadingMore';
 import OrderItem from '~/Components/OrderItem/OrderItem';
 import WebviewCustom from '~/Components/WebviewCustom/WebviewCustomComponent';
 
@@ -13,8 +16,10 @@ class OrderTab extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isCalling: false,
       refreshing: false,
       listOrder: [],
+      isLoadmoring: false,
       webViewConfig: {
         url: '',
         isShow: false
@@ -22,22 +27,15 @@ class OrderTab extends Component {
     }
   }
 
-  componentDidMount() {
-    const mocks = [];
-    for (let i = 0; i < 1; i++) {
-      mocks.push({
-        id: i.toString(),
-        image: 'werwe',
-        name: `Túi Channel - black ${i}`,
-        prices: '$58.00',
-        status: 'Chờ duyệt',
-        createdAt: '20/10/2020',
-        isPay: 'Thanh toán'
-      })
-    }
-
+  async componentDidMount() {
     this.setState({
-      listOrder: mocks
+      isCalling: true
+    })
+
+    const listOrder = await this.getOrder();
+    this.setState({
+      isCalling: false,
+      listOrder
     })
   }
 
@@ -45,8 +43,34 @@ class OrderTab extends Component {
     this.props.viewOrder(order);
   }
 
-  refreshListOrder() {
-    
+  async refreshListOrder() {
+    const listOrder = await this.getOrder(true);
+    this.setState({
+      listOrder
+    })   
+  }
+
+  async getOrder(isRefresh = false) {
+    const { listOrder } = this.state;
+    return await getListOrder(isRefresh ? 0 : listOrder.length);
+  }
+
+  async loadMoreResults(info) {
+    const { isLoadmoring } = this.state;
+    if (isLoadmoring) {
+      return;
+    }
+
+    this.setState({
+      isLoadmoring: true
+    }, async () => {
+      const loadMoreOrder = await this.getOrder();
+      const { listOrder } = this.state;
+      this.setState({
+        isLoadmoring: false,
+        listOrder: listOrder.concat(loadMoreOrder)
+      })
+    })    
   }
 
   openWebView(url) {
@@ -68,7 +92,7 @@ class OrderTab extends Component {
   }
 
   render() {
-    const { listOrder, refreshing, webViewConfig } = this.state;
+    const { listOrder, refreshing, webViewConfig, isCalling, isLoadmoring } = this.state;
 
     const renderItem = ({item}) => (
       <OrderItem 
@@ -81,23 +105,29 @@ class OrderTab extends Component {
   
     return (
       <View style={commom.flex_1}>
-        <FlatList
-          data={listOrder}
-          renderItem={renderItem}
-          keyExtractor={item => item.id}
-          refreshControl={
-            <RefreshControl
-             refreshing={refreshing}
-             onRefresh={() => this.refreshListOrder()}
-            />
-          }
-        />
+        {!isCalling ? (
+          <FlatList
+            data={listOrder}
+            renderItem={renderItem}
+            keyExtractor={item => item.id}
+            refreshControl={
+              <RefreshControl
+                refreshing={refreshing}
+                onRefresh={() => this.refreshListOrder()}
+              />
+            }
+            onEndReachedThreshold={0.01}
+            onEndReached={info => this.loadMoreResults(info)}
+          />
+        ) : <Loading/>}
 
         <WebviewCustom
           close={() => this.closeWebView()}
           url={webViewConfig.url}
           isShow={webViewConfig.isShow}
         />
+
+        {isLoadmoring ? <LoadingMore /> : null}        
       </View>
     )
   }

@@ -5,48 +5,74 @@ import {
   FlatList,
   RefreshControl
 } from 'react-native';
-import PropTypes from 'prop-types';
 
 import { commom } from '~/Themes';
 import styles from './TransactionTabStyle';
+import Loading from '~/Components/Loading/Loading';
+import LoadingMore from '~/Components/LoadingMore/LoadingMore';
 import TransactionItem from '~/Components/TransactionItem/TransactionItem';
+import { getList as getListTransaction } from '~/Services/TransactionService'; 
 
 class TransactionTab extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isCalling: false,
       refreshing: false,
-      listTransaction: []
+      listTransaction: [],
+      isLoadmoring: false
     }
   }
 
-  componentDidMount() {
-    const mocks = [];
-    for (let i = 0; i < 20; i++) {
-      mocks.push({
-        id: i.toString(),
-        title: `Item ${i}`,
-        detail: 'thanh toan abc',
-        createdAt: '20/10/2020',
-        money: '2500000'
-      })
-    }
-
+  async componentDidMount() {
     this.setState({
-      listTransaction: mocks
+      isCalling: true
     })
+
+    const listTransaction = await this.getTransaction();
+    this.setState({
+      listTransaction,
+      isCalling: false
+    })
+  }
+
+  async getTransaction(isRefresh = false) {
+    const { listTransaction } = this.state;
+    return await getListTransaction(isRefresh ? 0 : listTransaction.length);
   }
 
   viewTransaction(transaction) {
     
   }
+  
 
-  refreshListTransaction() {
-    console.log('Loading!');
+  async loadMoreResults(info) {
+    const { isLoadmoring } = this.state;
+    if (isLoadmoring) {
+      return;
+    }
+
+    this.setState({
+      isLoadmoring: true
+    }, async () => {
+      const loadMoreTransaction = await this.getTransaction();
+      const { listTransaction } = this.state;
+      this.setState({
+        isLoadmoring: false,
+        listTransaction: listTransaction.concat(loadMoreTransaction)
+      })
+    })    
+  }
+
+  async refreshListTransaction() {
+    const listTransaction = await this.getTransaction(true);
+    this.setState({
+      listTransaction
+    })    
   }
 
   render() {
-    const { listTransaction, refreshing } = this.state;    
+    const { listTransaction, refreshing, isCalling, isLoadmoring } = this.state;    
 
     const renderItem = ({item}) => (
       <TransactionItem transaction={item} view={() => this.viewTransaction(item)} />
@@ -55,17 +81,25 @@ class TransactionTab extends Component {
     return (
       <View style={commom.flex_1}>
         <HeaderList/>
-        <FlatList
-          data={listTransaction}
-          renderItem={renderItem}
-          keyExtractor={item => item.id}
-          refreshControl={
-            <RefreshControl
-             refreshing={refreshing}
-             onRefresh={() => this.refreshListTransaction()}
-            />
-          }
-        />
+        { isCalling ? <Loading/> : (
+          <FlatList
+            data={listTransaction}
+            renderItem={renderItem}
+            keyExtractor={item => item.id}
+            refreshControl={
+              <RefreshControl
+                refreshing={refreshing}
+                onRefresh={() => this.refreshListTransaction()}
+              />
+            }
+            onEndReachedThreshold={0.01}
+            onEndReached={info => this.loadMoreResults(info)}
+          />
+        ) }
+
+        { isLoadmoring ? (
+          <LoadingMore/>
+        ) : null }
       </View>
     )
   }

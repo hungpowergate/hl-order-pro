@@ -9,7 +9,7 @@ const Stack = createStackNavigator();
 export default class ProfileStackScreen extends Component {
   render() {
     return (
-      <Stack.Navigator>        
+      <Stack.Navigator>
         <Stack.Screen
           name={SCREEN.PROFILE.NAME}
           component={ProfleScreen}
@@ -23,7 +23,7 @@ export default class ProfileStackScreen extends Component {
           options={{ 
             title: SCREEN.CHANGE_PASSWORD.TITLE
           }}
-        />
+        />             
       </Stack.Navigator>
     )
   }

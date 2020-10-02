@@ -5,7 +5,10 @@ export const getList = (size) => {
       for (let i = size; i < (20 + size); i++) {
         mocks.push({
           id: i.toString(),
-          title: `Thong bao ${i}`
+          title: `Item ${i}`,
+          detail: 'thanh toan abc',
+          createdAt: '20/10/2020',
+          money: '2500000'
         })
       }
 

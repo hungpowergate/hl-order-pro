@@ -8,7 +8,7 @@ class InputDefault extends PureComponent {
 
   
   render() {
-    const {containerStl, inputWrapStl, inputStl, label, iconRight, submit, monney, hasLabel, hasError, textError, ...props} = this.props
+    const { containerStl, inputWrapStl, inputStl, label, iconRight, submit, monney, hasLabel, hasError, textError, ...props} = this.props
     return (
       <View style={[styles.container, containerStl]}>
         {
