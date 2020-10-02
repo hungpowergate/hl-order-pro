@@ -2,32 +2,31 @@ import React, { Component } from 'react';
 import {
   View,
   Text,
-  Button
+  Button,
+  TouchableOpacity
 } from 'react-native';
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 import styles from './TransactionFilterStyle';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 class TransactionFilter extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      startDate: '09/07/2020',
-      endDate: '09/07/2020',
+    this.state = {      
       isShowStartDate: false,
       isShowEndDate: false,
     }
   }
 
-  setStartDate(date) {    
+  setStartDate(date) {
     this.setState({
       isShowStartDate: false,
     })
 
     this.props.setFilter({
-      startDate: date.toString()
+      startDate: moment(date).format('DD/MM/YYYY')
     })
   }
 
@@ -37,7 +36,19 @@ class TransactionFilter extends Component {
     })
 
     this.props.setFilter({
-      endDate: date.toString()
+      endDate: moment(date).format('DD/MM/YYYY')
+    })
+  }
+
+  openStartDate() {
+    this.setState({
+      isShowStartDate: true 
+    })
+  }
+
+  openEndDate() {
+    this.setState({
+      isShowEndDate: true 
     })
   }
 
@@ -46,21 +57,21 @@ class TransactionFilter extends Component {
     const { isShowStartDate, isShowEndDate } = this.state;
 
     return (
-      <View style={[styles.container, {
-        bottom: option.isShow ? 0 : -200
-      }]}>
+      <View style={styles.container}>
         <Text>Thời gian</Text>
-        <TouchableOpacity onPress={() => this.setState({isShowStartDate: true})}>
-          <Text>{option.query.startDate}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.setState({isShowEndDate: true})}>
-          <Text>{option.query.endDate}</Text>
-        </TouchableOpacity>
+        <View style={styles.inputContainer}>          
+          <TouchableOpacity style={styles.inputDate} onPress={() => this.openStartDate()}>
+            <Text>{option.query.startDate ? option.query.startDate : '--/--/----'}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.inputDate} onPress={() => this.openEndDate()}>
+            <Text>{option.query.endDate ? option.query.endDate : '--/--/----'}</Text>
+          </TouchableOpacity>
+        </View>        
 
         <DateTimePickerModal
           isVisible={isShowStartDate}
           mode="date"
-          onConfirm={(date) => this.setStartDate(date)}          
+          onConfirm={(date) => this.setStartDate(date)}
           onCancel={() => console.log('close date')}
         />
         <DateTimePickerModal
@@ -69,12 +80,16 @@ class TransactionFilter extends Component {
           onConfirm={(date) => this.setEndDate(date)}          
           onCancel={() => console.log('close date')}
         />
-        <Button 
-          title="Áp dụng"
-        />
-        <Button 
-          title="Bỏ lọc"
-        />
+        <View style={styles.buttonContainer}>
+          <Button
+            onPress={() => this.props.search()}
+            title="Áp dụng"
+          />
+          <Button 
+            onPress={() => this.props.reset()}
+            title="Bỏ lọc"
+          />
+        </View>        
       </View>
     )
   }

@@ -5,8 +5,10 @@ import {
   Button,
   Dimensions,
 } from 'react-native';
+import moment from 'moment';
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import RBSheet from "react-native-raw-bottom-sheet";
 
 import { commom } from '~/Themes';
 import styles from "./ListTransactionScreenStyle";
@@ -52,21 +54,14 @@ class ListTransactionScreen extends Component {
           title: 'Thanh toán' 
         }
       ],
-      filter: {
-        isShow: false,
+      filter: {        
         isFiltering: false,
         query: {
-          startDate: '09/07/2020',
-          endDate: '09/07/2020'
+          startDate: '',
+          endDate: ''
         }
       }
     }
-  }
-
-  toggleFilter() {
-    const { filter } = this.state;
-    filter.isShow = !filter.isShow;
-    this.setState({filter});
   }
 
   setFilter(newQuery) {
@@ -84,9 +79,23 @@ class ListTransactionScreen extends Component {
   componentDidMount() {
     this.props.navigation.setOptions({
       headerLeft: () =>  (
-        <Button title="Filter" onPress={() => this.toggleFilter()} />
+        <Button title="Filter" onPress={() => this.RBSheet.open()} />
       )
     })
+  }
+
+  resetSearch() {
+    const { filter } = this.state;
+    filter.isFiltering = false;    
+    this.setState({filter});
+    this.RBSheet.close();
+  }
+
+  search() {
+    const { filter } = this.state;
+    filter.isFiltering = true;    
+    this.setState({filter});
+    this.RBSheet.close();
   }
 
   render() {
@@ -106,10 +115,21 @@ class ListTransactionScreen extends Component {
             onIndexChange={index => this.setState({index})}
             initialLayout={initialLayout}
             getLabelText={({ route }) => route.title}
-          />
-          <TransactionFilter 
-            option={filter}
-            setFilter={(query) => this.setFilter(query)}/>
+          />          
+
+          <RBSheet
+            ref={ref => {
+              this.RBSheet = ref;
+            }}
+            height={200}
+            openDuration={250}
+          >
+            <TransactionFilter 
+              option={filter}
+              search={() => this.search()}
+              reset={() => this.resetSearch()}
+              setFilter={(query) => this.setFilter(query)}/>
+          </RBSheet>
         </View>
       // </SafeAreaView>
     )

@@ -4,11 +4,19 @@ import { Colors } from '~/Themes';
 
 export default StyleSheet.create({
   container: {
-    height: 200,
-    backgroundColor: Colors.white,
-    position: 'absolute',
-    bottom: -200,
-    left: 0,
-    right: 0
+    backgroundColor: Colors.white    
+  },
+  inputDate: {    
+    width: 100,
+    height: 50,
+    margin: 6,
+    borderWidth: 1,
+    borderColor: 'black'
+  },
+  inputContainer: {
+    flexDirection: 'row',
+  },
+  buttonContainer: {
+    flexDirection: 'row',
   }
 })
