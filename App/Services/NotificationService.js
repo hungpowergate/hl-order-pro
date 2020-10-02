@@ -1,16 +1,15 @@
-export const getList = () => {
+export const getList = (size) => {
   return new Promise((resolve, reject) => {
-    const mocks = [];
-    for (let i = 0; i < 20; i++) {
-      mocks.push({
-        id: i.toString(),
-        title: `Thong bao ${i}`
-      })
-    }
+    setTimeout(() => {
+      const mocks = [];
+      for (let i = size; i < (20 + size); i++) {
+        mocks.push({
+          id: i.toString(),
+          title: `Thong bao ${i}`
+        })
+      }
 
-    resolve({
-      status: 1,
-      data: mocks
-    })
+      resolve(mocks);
+    }, 1000)
   })
 }

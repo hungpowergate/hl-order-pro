@@ -88,8 +88,8 @@ class TransactionTab extends Component {
             keyExtractor={item => item.id}
             refreshControl={
               <RefreshControl
-              refreshing={refreshing}
-              onRefresh={() => this.refreshListTransaction()}
+                refreshing={refreshing}
+                onRefresh={() => this.refreshListTransaction()}
               />
             }
             onEndReachedThreshold={0.01}

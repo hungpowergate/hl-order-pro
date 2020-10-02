@@ -13,6 +13,13 @@ export default class OrderStackScreen extends Component {
     return (
       <Stack.Navigator>
         <Stack.Screen
+          name={SCREEN.LIST_ORDER.NAME}
+          component={ListOrderScreen}
+          options={{
+            title: SCREEN.LIST_ORDER.TITLE
+          }}
+        />
+        <Stack.Screen
           name={SCREEN.CREATE_ORDER.NAME}
           component={CreateOrderScreen}
           options={{
@@ -32,14 +39,7 @@ export default class OrderStackScreen extends Component {
           options={{
             title: SCREEN.DETAIL_ORDER.TITLE
           }}
-        />
-        <Stack.Screen
-          name={SCREEN.LIST_ORDER.NAME}
-          component={ListOrderScreen}
-          options={{
-            title: SCREEN.LIST_ORDER.TITLE
-          }}
-        />
+        />        
       </Stack.Navigator>
     )
   }
