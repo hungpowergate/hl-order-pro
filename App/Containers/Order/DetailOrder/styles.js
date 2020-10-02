@@ -3,30 +3,10 @@ import { StyleSheet } from 'react-native';
 import { appStl, Colors } from '~/Themes';
 
 export default StyleSheet.create({
-  banner: {
-    position: 'relative',
-    height: 215
-  },
-  imgBanner: {
-    flex: 1,
-    resizeMode: "cover",
-    justifyContent: "center"
-  },
-  textBannerWarp: {
-    backgroundColor: 'rgba(255, 255, 255, 0.74)',
-    paddingVertical: 7,
-    position: 'absolute',
-    bottom: 0,
-    width: '100%'
-  },
-  textBanner: {
-    fontFamily: appStl.fontBold,
-    lineHeight: 20,
-    letterSpacing: -0.24,
-    color: '#000',
-    fontSize: 16,
-    textAlign: 'center',
-    
+  btnEdit: {
+    fontFamily: appStl.fontRegular,
+    fontSize: 12,
+    color: Colors.gray
   },
   titleField: {
     fontFamily: appStl.fontBold,

@@ -11,35 +11,47 @@ const Stack = createStackNavigator();
 export default class OrderStackScreen extends Component {
   render() {
     return (
-      <Stack.Navigator>
-        <Stack.Screen
-          name={SCREEN.LIST_ORDER.NAME}
-          component={ListOrderScreen}
+      <Stack.Navigator
+        headerMode='screen'
+        >
+       <Stack.Screen
+          name={SCREEN.DETAIL_ORDER.NAME}
+          component={DetailOrderScreen}
           options={{
-            title: SCREEN.LIST_ORDER.TITLE
+            title: SCREEN.DETAIL_ORDER.TITLE,
+            headerBackTitleVisible: false
           }}
-        />
+        /> 
+         <Stack.Screen
+            name={SCREEN.EDIT_ORDER.NAME}
+            component={EditOrderScreen}
+            options={{
+              title: SCREEN.EDIT_ORDER.TITLE,
+              headerBackTitleVisible: false,
+              headerTintColor: '#000000'
+
+            }}
+          />
         <Stack.Screen
           name={SCREEN.CREATE_ORDER.NAME}
           component={CreateOrderScreen}
           options={{
-            title: SCREEN.CREATE_ORDER.TITLE
+            title: SCREEN.CREATE_ORDER.TITLE,
+            headerBackTitleVisible: false
           }}
         />
+       
         <Stack.Screen
-          name={SCREEN.EDIT_ORDER.NAME}
-          component={EditOrderScreen}
+          name={SCREEN.LIST_ORDER.NAME}
+          component={ListOrderScreen}
           options={{
-            title: SCREEN.EDIT_ORDER.TITLE
+            title: SCREEN.LIST_ORDER.TITLE,
+            headerBackTitleVisible: false,
+            tintColor: 'red'
           }}
         />
-        <Stack.Screen
-          name={SCREEN.DETAIL_ORDER.NAME}
-          component={DetailOrderScreen}
-          options={{
-            title: SCREEN.DETAIL_ORDER.TITLE
-          }}
-        />        
+        
+              
       </Stack.Navigator>
     )
   }

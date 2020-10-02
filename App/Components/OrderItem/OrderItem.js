@@ -9,7 +9,8 @@ import PropTypes from 'prop-types';
 import ImagePicker from 'react-native-image-picker';
 
 import styles from './styles';
-import { Images, Colors, commom } from '~/Themes';
+import { Images, Colors } from '~/Themes';
+import OrderStatus from '~/Components/OrderStatus';
 
 export default class OrderItem extends Component {
   captureImage() {
@@ -50,13 +51,9 @@ export default class OrderItem extends Component {
             <Text style={styles.name}>{order.prices}</Text>
           </View>
           <View style={styles.colRight}>
-            <View style={[commom.status, {backgroundColor: colorStatus}]}>
-              <Text style={commom.statusText}>{order.status}</Text>
-            </View>
+            <OrderStatus status={order.status} color={colorStatus}/>
             <Text style={styles.createAt}>{order.createdAt}</Text>
-            <View style={[styles.status, {backgroundColor: colorStatus}]}>
-              <Text style={styles.statusText}>{order.isPay}</Text>
-            </View>
+            <OrderStatus status={order.isPay} color={colorStatus}/>
           </View>
         </TouchableOpacity>
         

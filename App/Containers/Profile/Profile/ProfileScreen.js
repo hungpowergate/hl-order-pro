@@ -3,7 +3,9 @@ import {
   View,
   Text,
   TouchableHighlight,
-  TouchableOpacity
+  TouchableOpacity,
+  ImageBackground,
+  Image
 } from 'react-native';
 import RadioForm, {
   RadioButton,
@@ -13,9 +15,10 @@ import RadioForm, {
 import ValidationComponent from 'react-native-form-validator';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import moment from 'moment';
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 
 import styles from './ProfileScreenStyle';
-import { Colors } from '~/Themes';
+import { Colors, commom, Images } from '~/Themes';
 import MESSAGE from '~/Constants/Message';
 import { SCREEN } from '~/Services/NavigationService';
 import Button from '~/Components/Button';
@@ -74,11 +77,27 @@ class ProfileScreen extends ValidationComponent {
     const { birthDay, email, phone, address, sex, isShowDate, isCalling } = this.state;
 
     return (
-      <View>
-        <SelectSex
-          val={sex}
-          update={(val) => this.setState({sex: val})}
-        />
+      <KeyboardAwareScrollView contentContainerStyle={commom.flex_1}>
+        <View style={[commom.container, commom.pt30]}>
+          <View style={commom.mb30}>
+            <View style={styles.avatarWrap}>
+              <View style={styles.avatar}>
+                <ImageBackground source={Images.logo} style={styles.avatarImg}/>
+              </View>
+              <TouchableOpacity style={styles.cameraWrap} onPress={() => {}}>
+                <Image source={Images.cameraIconGray} style={styles.camera}/>
+              </TouchableOpacity>
+            </View>
+
+            <Text style={styles.userName}>User Name</Text>
+          </View>
+
+          <Text style={styles.formLabel}>Thông tin cá nhân </Text>
+
+          <SelectSex
+            val={sex}
+            update={(val) => this.setState({sex: val})}
+          />
 
         <TouchableOpacity onPress={() => this.setState({isShowDate: true})}>
           <Input
@@ -89,7 +108,7 @@ class ProfileScreen extends ValidationComponent {
             placeholder="Ngày tháng/năm sinh"
           />
         </TouchableOpacity>        
-        {this.isFieldInError('birthDay') ? <Text style={styles.errorText}>{MESSAGE.BIRTHDAY_REQUIRED}</Text> : null}
+        {this.isFieldInError('birthDay') ? <Text style={commom.errorText}>{MESSAGE.BIRTHDAY_REQUIRED}</Text> : null}
 
         <Input
           containerStl={styles.input}
@@ -97,8 +116,8 @@ class ProfileScreen extends ValidationComponent {
           onChangeText={text => this.setState({ email: text })}
           placeholder="Email"
         />
-        {this.isFieldInError('email') && this.getFailedRulesInField('email').includes('required') ? <Text style={styles.errorText}>{MESSAGE.EMAIL_REQUIRED}</Text> : null}
-        {this.isFieldInError('email') && this.getFailedRulesInField('email').includes('email') ? <Text style={styles.errorText}>{MESSAGE.EMAIL_INVALID}</Text> : null}
+        {this.isFieldInError('email') && this.getFailedRulesInField('email').includes('required') ? <Text style={commom.errorText}>{MESSAGE.EMAIL_REQUIRED}</Text> : null}
+        {this.isFieldInError('email') && this.getFailedRulesInField('email').includes('email') ? <Text style={commom.errorText}>{MESSAGE.EMAIL_INVALID}</Text> : null}
 
         <Input
           containerStl={styles.input}
@@ -106,7 +125,7 @@ class ProfileScreen extends ValidationComponent {
           onChangeText={text => this.setState({ phone: text })}
           placeholder="Số điện thoại"
         />
-        {this.isFieldInError('phone') ? <Text style={styles.errorText}>{MESSAGE.PHONE_REQUIRED}</Text> : null}
+        {this.isFieldInError('phone') ? <Text style={commom.errorText}>{MESSAGE.PHONE_REQUIRED}</Text> : null}
 
         <Input
           containerStl={styles.input}
@@ -114,15 +133,14 @@ class ProfileScreen extends ValidationComponent {
           onChangeText={text => this.setState({ address: text })}
           placeholder="Địa chỉ"
         />
-        {this.isFieldInError('address') ? <Text style={styles.errorText}>{MESSAGE.ADDRESS_REQUIRED}</Text> : null}
+        {this.isFieldInError('address') ? <Text style={commom.errorText}>{MESSAGE.ADDRESS_REQUIRED}</Text> : null}
 
         <Button
-          containerStl={styles.btnUpdate}
+          containerStl={commom.mt20}
           text="Cập nhật"
           isLoading={isCalling}
           onPress={() => this.update()}
         />
-
         <DateTimePickerModal
           isVisible={isShowDate}
           mode="date"
@@ -133,7 +151,8 @@ class ProfileScreen extends ValidationComponent {
         <TouchableHighlight onPress={() => this.changePassword()}>
           <Text>Đổi mật khẩu</Text>
         </TouchableHighlight>
-      </View>
+        </View>
+      </KeyboardAwareScrollView>
     )
   }
 }

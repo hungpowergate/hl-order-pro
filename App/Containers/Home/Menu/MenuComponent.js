@@ -24,7 +24,7 @@ class Menu extends Component {
           <TouchableHighlight style={styles.menuItem} onPress={() => this.props.scanCode()}>
             <Text>Quét mã</Text>
           </TouchableHighlight>
-          <TouchableHighlight style={styles.menuItem} onPress={() => this.props.redirectScreen(SCREEN.ORDER.NAME)}>
+          <TouchableHighlight style={styles.menuItem} onPress={() => this.props.redirectScreen(SCREEN.LIST_ORDER.NAME)}>
             <Text>Đơn hàng</Text>
           </TouchableHighlight>
           <TouchableHighlight style={styles.menuItem} onPress={() => this.props.redirectScreen(SCREEN.TRANSACTION.NAME)}>

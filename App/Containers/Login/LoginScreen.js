@@ -83,37 +83,37 @@ export default class LoginScreen extends ValidationComponent {
       <SafeAreaView style={commom.safeArea}>
         <KeyboardAwareScrollView contentContainerStyle={commom.flex_1}>
           <View style={[commom.container]}>
-          <View style={styles.logoWrap}>
-            <Image style={styles.logo} source={Images.logo}/>
-          </View>
-          <View style={styles.inputWrap}>
-            <TextInput 
-              placeholderTextColor={Colors.placeholder}
-              style={styles.input} 
-              value={username} 
-              placeholder="Tên đăng nhập"
-              onChangeText={text => this.setState({username: text})}
+            <View style={styles.logoWrap}>
+              <Image style={styles.logo} source={Images.logo}/>
+            </View>
+            <View style={styles.inputWrap}>
+              <TextInput 
+                placeholderTextColor={Colors.placeholder}
+                style={styles.input} 
+                value={username} 
+                placeholder="Tên đăng nhập"
+                onChangeText={text => this.setState({username: text})}
+              />
+              {this.isFieldInError('username') ? <Text style={styles.errorText}>{MESSAGE.USERNAME_REQUIRED}</Text> : null}
+            </View>
+            <View style={styles.inputWrap}>
+              <TextInput 
+                placeholderTextColor={Colors.placeholder}
+                style={styles.input} 
+                value={password}
+                ecureTextEntry={true}
+                placeholder="Mật khẩu"
+                onChangeText={text => this.setState({password: text})}
+              />        
+              {this.isFieldInError('password') ? <Text style={styles.errorText}>{MESSAGE.PASSWORD_REQUIRED}</Text> : null}
+            </View>
+            <ButtonDefault             
+              text="Đăng nhập" 
+              isLoading={isCallingApi}
+              onPress={() => {this.login()}}
+              containerStl={styles.btnLogin}
             />
-            {this.isFieldInError('username') ? <Text style={styles.errorText}>{MESSAGE.USERNAME_REQUIRED}</Text> : null}
-          </View>
-          <View style={styles.inputWrap}>
-            <TextInput 
-              placeholderTextColor={Colors.placeholder}
-              style={styles.input} 
-              value={password}
-              ecureTextEntry={true}
-              placeholder="Mật khẩu"
-              onChangeText={text => this.setState({password: text})}
-            />        
-            {this.isFieldInError('password') ? <Text style={styles.errorText}>{MESSAGE.PASSWORD_REQUIRED}</Text> : null}
-          </View>
-          <ButtonDefault             
-            text="Đăng nhập" 
-            isLoading={isCallingApi}
-            onPress={() => {this.login()}}
-            containerStl={styles.btnLogin}
-          />
-          <Text style={styles.textSmall}>
+            <Text style={styles.textSmall}>
             Dùng tài khoản 
             <Text style={styles.textBold}> {WEBSITE.NAME} </Text>
             để đăng nhập

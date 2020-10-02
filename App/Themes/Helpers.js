@@ -14,11 +14,24 @@ export default StyleSheet.create({
     paddingHorizontal: 15,
     backgroundColor: 'white'
   },
+  headerRight: {
+    paddingRight: 15,
+    paddingLeft: 15
+  },
   center: {
     alignItems: 'center',
     justifyContent: 'center',
   },
-
+  errorText: {
+    color: Colors.error,
+    marginTop: 6
+  },
+  pt20 : {
+    paddingTop: 20
+  }, 
+  pt30 : {
+    paddingTop: 30
+  },  
   pr20: {
     paddingRight: 20
   },
@@ -43,7 +56,9 @@ export default StyleSheet.create({
   mb10: {
     marginBottom: 10
   },
-
+  mb30: {
+    marginBottom: 30
+  },
   pt35: {
     paddingTop: 35
   },

@@ -9,12 +9,19 @@ import ButtonDefault from '~/Components/Button';
 import { commom, Images, Colors } from '~/Themes';
 
 import styles from './styles';
+import orderStl from '../styles';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import OrderStatus from '~/Components/OrderStatus';
 export default class DetailOrderScreen extends Component {
 
   componentDidMount() {
     this.props.navigation.setOptions({      
       headerRight: () =>  (
-        <Button title="Chỉnh sửa" onPress={() => this.props.navigation.navigate(SCREEN.EDIT_ORDER.NAME)} />
+        <TouchableOpacity style={commom.headerRight} onPress={() => this.props.navigation.navigate(SCREEN.EDIT_ORDER.NAME)}>
+          <Text style={styles.btnEdit}>Chỉnh sửa</Text>
+        </TouchableOpacity>
+
+        // <Button style={styles.btnEdit} title="Chỉnh sửa" onPress={() => this.props.navigation.navigate(SCREEN.EDIT_ORDER.NAME)} />
       )
     })
   }
@@ -23,11 +30,10 @@ export default class DetailOrderScreen extends Component {
     return (
       <View style={[commom.container, commom.px0]}>
         <ScrollView contentContainerStyle={commom.flex_1}>
-
-          <View style={styles.banner}>
-            <ImageBackground source={Images.product} style={styles.imgBanner}/>
-            <View style={styles.textBannerWarp}>
-              <Text style={styles.textBanner}>$25</Text>
+          <View style={orderStl.banner}>
+            <ImageBackground source={Images.product} style={orderStl.imgBanner}/>
+            <View style={orderStl.textBannerWarp}>
+              <Text style={orderStl.textBanner}>$25</Text>
             </View>
           </View>
 
@@ -90,13 +96,9 @@ export default class DetailOrderScreen extends Component {
                 </Text>
                 <View style={styles.historyDetails}>
                   <Text>- Thay đổi </Text>
-                  <View style={[commom.status, {backgroundColor: Colors.daBao}]}>
-                    <Text style={commom.statusText}>Đã báo</Text>
-                  </View>
+                  <OrderStatus status='Đã báo' color={Colors.daBao}/>
                   <Text> thành </Text>
-                  <View style={[commom.status, {backgroundColor: Colors.pending}]}>
-                    <Text style={commom.statusText}>Chờ duyệt</Text>
-                  </View>
+                  <OrderStatus status='Chờ duyệt' color={Colors.pending}/>
                 </View>
                 <Text style={styles.historyTime}>23/09/2020 - 18:00</Text>
               </View>
