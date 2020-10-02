@@ -9,6 +9,7 @@ import ValidationComponent from 'react-native-form-validator';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Toast } from 'react-native-easy-toast';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import OneSignal from 'react-native-onesignal';
 
 import { 
   WEBSITE, 
@@ -30,6 +31,12 @@ export default class LoginScreen extends ValidationComponent {
       password: '',
       isCallingApi: false
     }    
+
+    OneSignal.setLogLevel(6, 0);
+  
+    OneSignal.init("021c72fc-cc3b-4b74-9539-54f33a65d617", {kOSSettingsKeyAutoPrompt : false, kOSSettingsKeyInAppLaunchURL: false, kOSSettingsKeyInFocusDisplayOption:2});
+    OneSignal.inFocusDisplaying(2); // Controls what should happen if a notification is received while the app is open. 2 means that the notification will go directly to the device's notification center.
+    
   }
   
   async login() {
