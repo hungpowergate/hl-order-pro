@@ -19,6 +19,9 @@ export default {
   inputText: '#111111',
   inputBorder: '#828282',
 
+  //home
+  headerBg: '#000000',
+  notiBg: '#f10183',
   // status Order
   pending: '#01CBA7',
   daBao: '#F1CB01',

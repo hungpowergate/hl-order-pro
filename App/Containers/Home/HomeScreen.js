@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import {ScrollView, 
+  View, Text, Image, TouchableOpacity, StatusBar} from 'react-native';
+import ImageSlider from 'react-native-image-slider';
 
-import { commom } from '~/Themes';
+import { commom, Images } from '~/Themes';
 import Menu from './Menu/MenuComponent';
 import Slider from './Slider/SliderComponent';
 import WebviewCustom from '~/Components/WebviewCustom/WebviewCustomComponent';
 import CodeInformationModal from '~/Components/CodeInformationModal/CodeInformationModal';
 import PaymentInformationModal from '~/Components/PaymentInfomationModal/PaymentInformationModal';
+import styles from './HomeStyle';
 
 class HomeScreen extends Component {
   constructor(props) {
@@ -44,9 +48,47 @@ class HomeScreen extends Component {
 
   render() {
     const { isShowWebview, url, isShowPayment, isShowCode, listProduct } = this.state;
-
+    const images = [
+      '~/Assets/Images/img-slider.png',
+      '~/Assets/Images/img-slider.png',
+      '~/Assets/Images/img-slider.png',
+    ]
     return (
-      <SafeAreaView style={commom.safeArea}>
+      <SafeAreaView style={[commom.safeArea, styles.safeArea]}>
+      {/* <StatusBar barStyle="dark-content" backgroundColor="#6a51ae" /> */}
+        <ScrollView style={styles.container}>
+
+        <View style={styles.headerContainer}>
+          <View style={styles.header}>
+            <View style={styles.avatar}>
+              <Image source={Images.logo} style={styles.imgAvt}/>
+            </View>
+            <View style={styles.colCenter}>
+              <Text style={styles.hello}>Xin chào,</Text>
+              <Text style={styles.userName}>User name</Text>
+            </View>
+            <TouchableOpacity style={styles.wrapNotiIcon} onPress={() => {}}>
+              <View style={styles.badge}>
+                <Text style={styles.notiNumber}>23</Text>
+              </View>
+              <Image source={Images.notiHeaderIcon} style={styles.iconNoti}/>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.carouselWrap}>
+            <ImageSlider
+              loopBothSides
+              autoPlayWithInterval={2000}
+              images={images}
+              customSlide={({ index, item, style, width }) => (
+                <View key={index} style={[style, styles.customSlide]}>
+                  <Image source={{ uri: item }} style={styles.customImage} />
+                </View>
+              )}
+            />
+          </View>
+
+        </View>
+
         <Menu
           scanCode={() => this.setState({isShowCode: true})}
           payment={() => this.setState({isShowPayment: true})}
@@ -73,6 +115,8 @@ class HomeScreen extends Component {
         <CodeInformationModal 
           isShow={isShowCode}
         />
+        </ScrollView>
+
       </SafeAreaView>      
     )
   }
