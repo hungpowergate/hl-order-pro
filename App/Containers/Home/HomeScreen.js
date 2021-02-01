@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {ScrollView, 
-  View, Text, Image, TouchableOpacity, StatusBar} from 'react-native';
-import ImageSlider from 'react-native-image-slider';
+  View, Text, Image, TouchableOpacity, StatusBar, Dimensions} from 'react-native';
+import Carousel, { Pagination, ParallaxImage } from 'react-native-snap-carousel';
 
 import { commom, Images } from '~/Themes';
 import Menu from './Menu/MenuComponent';
@@ -11,7 +11,7 @@ import WebviewCustom from '~/Components/WebviewCustom/WebviewCustomComponent';
 import CodeInformationModal from '~/Components/CodeInformationModal/CodeInformationModal';
 import PaymentInformationModal from '~/Components/PaymentInfomationModal/PaymentInformationModal';
 import styles from './HomeStyle';
-
+const { width: screenWidth } = Dimensions.get('window')
 class HomeScreen extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +20,13 @@ class HomeScreen extends Component {
       isShowPayment: false,
       isShowCode: false,
       url: 'https://reactnative.dev/',
-      listProduct: []
+      listProduct: [],
+      imgCarousel: [
+        {uri: require('~/Assets/Images/img-slider.png')},
+        {uri: require('~/Assets/Images/img-slider.png')},
+        {uri: require('~/Assets/Images/img-slider.png')}
+      ],
+      activeSlide: 0
     }
   }
 
@@ -46,13 +52,46 @@ class HomeScreen extends Component {
     })
   }  
 
+  _renderItemSlides = ({item, index}, parallaxProps) => {
+    return (
+      <View style={styles.item}>
+        <ParallaxImage
+          source={item.uri}
+          containerStyle={styles.imageContainer}
+          style={styles.image}
+          parallaxFactor={0.4}
+          {...parallaxProps}
+        />
+    </View>
+    );
+  }
+
+  get pagination () {
+    const { imgCarousel, activeSlide } = this.state;
+    return (
+        <Pagination
+          dotsLength={imgCarousel.length}
+          activeDotIndex={activeSlide}
+          containerStyle={styles.pagination}
+          dotStyle={{
+              width: 10,
+              height: 10,
+              borderRadius: 5,
+              marginHorizontal: 2,
+              backgroundColor: 'rgba(255, 255, 255, 0.92)'
+          }}
+          inactiveDotStyle={{
+              // Define styles for inactive dots here
+          }}
+          inactiveDotOpacity={0.4}
+          inactiveDotScale={1}
+        />
+    );
+}
+
+
   render() {
     const { isShowWebview, url, isShowPayment, isShowCode, listProduct } = this.state;
-    const images = [
-      '~/Assets/Images/img-slider.png',
-      '~/Assets/Images/img-slider.png',
-      '~/Assets/Images/img-slider.png',
-    ]
     return (
       <SafeAreaView style={[commom.safeArea, styles.safeArea]}>
       {/* <StatusBar barStyle="dark-content" backgroundColor="#6a51ae" /> */}
@@ -75,16 +114,19 @@ class HomeScreen extends Component {
             </TouchableOpacity>
           </View>
           <View style={styles.carouselWrap}>
-            <ImageSlider
-              loopBothSides
-              autoPlayWithInterval={2000}
-              images={images}
-              customSlide={({ index, item, style, width }) => (
-                <View key={index} style={[style, styles.customSlide]}>
-                  <Image source={{ uri: item }} style={styles.customImage} />
-                </View>
-              )}
+            <Carousel
+              ref={(c) => { this._carousel = c; }}
+              data={this.state.imgCarousel}
+              renderItem={this._renderItemSlides}
+              onSnapToItem={(index) => this.setState({ activeSlide: index }) }
+              sliderWidth={screenWidth}
+              sliderHeight={162}
+              itemWidth={screenWidth - 30}
+              hasParallaxImages={true}
             />
+            <View style={styles.paginationWrap}>
+              { this.pagination }
+            </View>
           </View>
 
         </View>
