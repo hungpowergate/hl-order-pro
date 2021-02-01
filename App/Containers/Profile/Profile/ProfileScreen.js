@@ -5,7 +5,7 @@ import {
   TouchableHighlight,
   TouchableOpacity,
   ImageBackground,
-  Image
+  Image,
 } from 'react-native';
 import RadioForm, {
   RadioButton,
@@ -77,7 +77,7 @@ class ProfileScreen extends ValidationComponent {
     const { birthDay, email, phone, address, sex, isShowDate, isCalling } = this.state;
 
     return (
-      <KeyboardAwareScrollView contentContainerStyle={commom.flex_1}>
+      <KeyboardAwareScrollView contentContainerStyle={{flexGrow: 1}} enableOnAndroid={true} extraHeight={130} extraScrollHeight={130}>
         <View style={[commom.container, commom.pt30]}>
           <View style={commom.mb30}>
             <View style={styles.avatarWrap}>
