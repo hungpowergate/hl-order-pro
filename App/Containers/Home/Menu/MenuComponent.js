@@ -12,10 +12,10 @@ import styles from './MenuComponentStyle';
 class Menu extends Component {
   render() {
     return (
-      <View>
-        <View>
+      <View style={styles.menuContainer}>
+        <View style={styles.rowBalance}>
           <Text>Số dư ví</Text>
-          <Text>5.000.000đ</Text>
+          <Text style={styles.numberBalance}>5.000.000đ</Text>
         </View>
         <View style={styles.listMenu}>
           <TouchableHighlight style={styles.menuItem} onPress={() => this.props.payment()}>

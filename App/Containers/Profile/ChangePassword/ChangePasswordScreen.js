@@ -4,10 +4,12 @@ import {
   Text,
 } from 'react-native';
 import ValidationComponent from 'react-native-form-validator';
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 
 import Button from '~/Components/Button';
 import Input from '~/Components/Inputs';
 import MESSAGE from '~/Constants/Message';
+import { Colors, commom, Images } from '~/Themes';
 import styles from './ChangePasswordScreenStyle';
 
 class ChangePasswordScreen extends ValidationComponent {
@@ -41,7 +43,8 @@ class ChangePasswordScreen extends ValidationComponent {
     const { oldPassword, newPassword, confirmPassword, isCalling } = this.state;
 
     return (
-      <View>
+      <KeyboardAwareScrollView>
+        <View style={[commom.container, commom.pt30]}>
         <Input
           value={oldPassword}
           containerStl={styles.input}
@@ -76,6 +79,7 @@ class ChangePasswordScreen extends ValidationComponent {
           text="Cập nhật mật khẩu"
         />
       </View>
+      </KeyboardAwareScrollView>
     )
   }
 }

@@ -1,5 +1,6 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform, Dimensions } from 'react-native';
 import { appStl, Colors } from '~/Themes';
+const { width: screenWidth } = Dimensions.get('window')
 
 export default StyleSheet.create({
   safeArea: {
@@ -10,9 +11,12 @@ export default StyleSheet.create({
   },
   headerContainer: {
     position: 'relative',
+    height: 280
   },
   carouselWrap: {
-    backgroundColor: 'red'
+    position: 'absolute',
+    width: '100%',
+    bottom: 35,
   },
   header: {
     height: 150,
@@ -77,11 +81,32 @@ export default StyleSheet.create({
   },
 
   // slide
-  customSlide: {
-
+  paginationWrap: {
+    justifyContent: 'center',
+    width: '100%',
+    
   },
-  imgSlide: {
-    width: 100,
-    height: 100
-  }
+  pagination: {
+    position: 'absolute',
+    bottom: -10,
+    width: '100%',
+  
+  },
+  item: {
+    width: screenWidth - 30,
+    height: 170,
+  },
+  imageContainer: {
+    flex: 1,
+    marginBottom: Platform.select({ ios: 0, android: 1 }), // Prevent a random Android rendering issue
+    backgroundColor: 'white',
+    borderRadius: 8,
+  },
+  image: {
+    ...StyleSheet.absoluteFillObject,
+    // resizeMode: 'cover',
+    resizeMode: "cover",
+    justifyContent: "center"
+  },
+
 })
